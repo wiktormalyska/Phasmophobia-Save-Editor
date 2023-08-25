@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhasmophobiaSaveEditor", "PhasmophobiaSaveEditor.csproj", "{58AFFC79-3965-47DA-ACB0-D45CA0A4ECFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58AFFC79-3965-47DA-ACB0-D45CA0A4ECFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58AFFC79-3965-47DA-ACB0-D45CA0A4ECFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58AFFC79-3965-47DA-ACB0-D45CA0A4ECFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58AFFC79-3965-47DA-ACB0-D45CA0A4ECFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {31641CAE-5E53-4064-9A22-C1234BE56D6C}
+	EndGlobalSection
+EndGlobal

@@ -1,2 +1,0 @@
-# phasmophobia-save-editor
-WIP
