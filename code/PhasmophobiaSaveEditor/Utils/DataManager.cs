@@ -11,7 +11,7 @@ namespace PhasmoSaveEditor
     internal class DataManager
     {
         string saveData;
-        public PhasmoData PhasmoData;
+        public dynamic PhasmoData;
         Cryptography cryptography;
         public DataManager() {
             string appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\..\\LocalLow";
@@ -33,7 +33,7 @@ namespace PhasmoSaveEditor
             }
 
             saveData = File.ReadAllText(Path.Combine(tempPath,"decrypted-SaveFile.txt"));
-            PhasmoData = JsonConvert.DeserializeObject<PhasmoData>(saveData);
+            PhasmoData = JsonConvert.DeserializeObject(saveData);
         }
 
         public void save()
@@ -42,7 +42,7 @@ namespace PhasmoSaveEditor
             string gameSavePath = Path.Combine(appDataFolder, "Kinetic Games", "Phasmophobia", "SaveFile.txt");
             string tempPath = Path.Combine(appDataFolder, "Wiktor Malyska", "PhasmophobiaSaveEditor");
 
-            saveData = JsonConvert.SerializeObject(saveData);
+            saveData = JsonConvert.SerializeObject(saveData, Formatting.Indented);
             byte[] decryptedSave = Encoding.UTF8.GetBytes(saveData);
             cryptography.encryptFile(decryptedSave);
             File.Replace(Path.Combine(tempPath, "encrypted-SaveFile.txt"),gameSavePath,null);
