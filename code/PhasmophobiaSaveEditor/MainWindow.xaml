@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhasmophobiaSaveEditor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Phasmo Save Editor" Height="305" Width="164" ResizeMode="NoResize">
+    <Grid Background="#FF3D3D3D" Margin="0,0,0,-1">
+        <Label Content="Money&#xD;&#xA;" HorizontalAlignment="Left" Margin="15,29,0,0" VerticalAlignment="Top" Width="81" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Margin="15,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" TextChanged="TextBox_TextChanged" Height="19"/>
+        <Label Content="Level&#xA;" HorizontalAlignment="Left" Margin="15,71,0,0" VerticalAlignment="Top" Width="81" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Margin="15,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" TextChanged="TextBox_TextChanged" Height="19"/>
+        <Label Content="Prestige Level&#xA;" HorizontalAlignment="Left" Margin="15,112,0,0" VerticalAlignment="Top" Width="86" Height="28"/>
+        <TextBox HorizontalAlignment="Left" Margin="15,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="139" TextChanged="TextBox_TextChanged" Height="19"/>
+        <Button Content="Save Changes" HorizontalAlignment="Center" Margin="0,258,0,0" VerticalAlignment="Top" Width="144">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button Content="Unlock all tier 3 items" HorizontalAlignment="Left" Margin="15,179,0,0" VerticalAlignment="Top" Width="139"/>
+        <TextBlock HorizontalAlignment="Left" Margin="15,204,0,0" TextWrapping="Wrap" Text="You have to be at least level 90 to unlock Tier 3 items" VerticalAlignment="Top" Width="139" FontSize="9"/>
 
     </Grid>
 </Window>
