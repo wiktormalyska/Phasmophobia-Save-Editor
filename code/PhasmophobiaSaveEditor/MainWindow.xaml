@@ -5,25 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PhasmophobiaSaveEditor"
         mc:Ignorable="d"
-        Title="Phasmo Save Editor" Height="305" Width="163" ResizeMode="NoResize">
-    <Grid Background="#FF3D3D3D" Margin="0,0,0,-1">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="43*"/>
-            <ColumnDefinition Width="39*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="Money&#xD;&#xA;" HorizontalAlignment="Left" Margin="15,0,0,0" VerticalAlignment="Top" Width="81" Height="28" Grid.ColumnSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Margin="15,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" TextChanged="TextBox_TextChanged" Height="19" Grid.ColumnSpan="2"/>
-        <Label Content="Level&#xA;" HorizontalAlignment="Left" Margin="15,47,0,0" VerticalAlignment="Top" Width="81" Height="28" Grid.ColumnSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Margin="15,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" TextChanged="TextBox_TextChanged" Height="19" Grid.ColumnSpan="2"/>
-        <Label Content="Prestige Level&#xA;" HorizontalAlignment="Left" Margin="15,99,0,0" VerticalAlignment="Top" Width="86" Height="28" Grid.ColumnSpan="2"/>
-        <TextBox HorizontalAlignment="Left" Margin="15,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" TextChanged="TextBox_TextChanged" Height="19" Grid.ColumnSpan="2"/>
-        <Button Content="Save Changes" HorizontalAlignment="Left" Margin="9,230,0,0" VerticalAlignment="Top" Width="144" Grid.ColumnSpan="2">
+        Title="Phasmo Save Editor" Height="362" Width="262" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="mainGrid" Height="362">
+        <Label Content="Money&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="80" Height="28" HorizontalContentAlignment="Center"/>
+        <Label Content="Level&#xA;" HorizontalAlignment="Center" Margin="0,62,0,0" VerticalAlignment="Top" Width="81" Height="28" HorizontalContentAlignment="Center"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Height="19"/>
+        <Label Content="Prestige Level&#xA;" HorizontalAlignment="Center" Margin="0,112,0,0" VerticalAlignment="Top" Width="86" Height="28" HorizontalContentAlignment="Center"/>
+        <TextBox HorizontalAlignment="Center" Margin="0,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" Height="20"/>
+        <Button Content="Save Changes" Margin="0,286,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="144" Click="Save">
             <Button.Effect>
                 <DropShadowEffect/>
             </Button.Effect>
         </Button>
-        <Button Content="Unlock all tier 3 items" HorizontalAlignment="Left" Margin="15,164,0,0" VerticalAlignment="Top" Width="139" Grid.ColumnSpan="2" RenderTransformOrigin="0.515,-0.251"/>
-        <TextBlock HorizontalAlignment="Left" Margin="15,189,0,0" TextWrapping="Wrap" Text="You have to be at least level 90 to unlock Tier 3 items" VerticalAlignment="Top" Width="139" FontSize="9" Grid.ColumnSpan="2"/>
-
+        <Button Content="Unlock all tier 3 items" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" Width="138" RenderTransformOrigin="0.515,-0.251"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,212,0,0" TextWrapping="Wrap" Text="You have to be at least level 90 to unlock Tier 3 items" VerticalAlignment="Top" Width="190"/>
+        <Label x:Name="money_value" Content="0" HorizontalAlignment="Center" Height="24" Margin="0,40,0,0" VerticalAlignment="Top" Width="28" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button x:Name="money_minus" Content="-1" HorizontalAlignment="Left" Height="20" Margin="97,42,0,0" VerticalAlignment="Top" Width="20" Click="money_minus_Click"/>
+        <Button x:Name="money_plus" Content="+1" HorizontalAlignment="Left" Height="20" Margin="145,42,0,0" VerticalAlignment="Top" Width="20" Click="money_plus_Click"/>
     </Grid>
+
 </Window>

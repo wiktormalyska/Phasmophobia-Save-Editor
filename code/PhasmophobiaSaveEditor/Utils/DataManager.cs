@@ -10,42 +10,52 @@ namespace PhasmoSaveEditor
 {
     internal class DataManager
     {
-        string saveData;
-        public dynamic PhasmoData;
+        //Paths
+        string appDataFolder;
+        string gameSavePath;
+        string programSavePath;
+        public string decryptedPath;
+        string encryptedPath;
+
+        //Data
+        byte[] encryptedData;
+        byte[] decryptedData;
+
+        //Json
+
+        //Utils
         Cryptography cryptography;
         public DataManager() {
-            string appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\..\\LocalLow";
-            string gameSavePath = Path.Combine(appDataFolder, "Kinetic Games", "Phasmophobia", "SaveFile.txt");
-            byte[] encryptedSave = File.ReadAllBytes(gameSavePath);
-            string tempPath = Path.Combine(appDataFolder, "Wiktor Malyska", "PhasmophobiaSaveEditor");
-            cryptography = new Cryptography(tempPath);
-            cryptography.decryptFile(encryptedSave);
+            appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\..\\LocalLow";
+            gameSavePath = Path.Combine(appDataFolder, "Kinetic Games", "Phasmophobia", "SaveFile.txt");
+            programSavePath = Path.Combine(appDataFolder, "Wiktor Malyska", "PhasmophobiaSaveEditor");
+            decryptedPath = Path.Combine(programSavePath, "decryptedSave.txt");
+            encryptedPath = Path.Combine(programSavePath, "encryptedSave.txt");
 
-            if (!Directory.Exists(tempPath))
-                Directory.CreateDirectory(tempPath);
-            if (!File.Exists(Path.Combine(appDataFolder, "Wiktor Malyska", "PhasmophobiaSaveEditor", "decrypted-SaveFile.txt")))
-            {
-                File.CreateText(Path.Combine(appDataFolder, "Wiktor Malyska", "PhasmophobiaSaveEditor", "decrypted-SaveFile.txt"));
-            }
-            if (!File.Exists(Path.Combine(appDataFolder, "Wiktor Malyska", "PhasmophobiaSaveEditor", "encrypted-SaveFile.txt")))
-            {
-                File.CreateText(Path.Combine(appDataFolder, "Wiktor Malyska", "PhasmophobiaSaveEditor", "encrypted-SaveFile.txt"));
-            }
+            cryptography = new Cryptography();
 
-            saveData = File.ReadAllText(Path.Combine(tempPath,"decrypted-SaveFile.txt"));
-            PhasmoData = JsonConvert.DeserializeObject(saveData);
+        }
+        public void init() 
+        {
+            initFiles();
+            encryptedData = File.ReadAllBytes(gameSavePath);
+            decryptedData = cryptography.decryptFile(encryptedData);
+            File.WriteAllBytes(decryptedPath, decryptedData);
         }
 
-        public void save()
-        {
-            string appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\..\\LocalLow";
-            string gameSavePath = Path.Combine(appDataFolder, "Kinetic Games", "Phasmophobia", "SaveFile.txt");
-            string tempPath = Path.Combine(appDataFolder, "Wiktor Malyska", "PhasmophobiaSaveEditor");
+        private void initFiles() {
+            createAndCleanFile(decryptedPath);
+            createAndCleanFile(encryptedPath);
+        }
 
-            saveData = JsonConvert.SerializeObject(saveData, Formatting.Indented);
-            byte[] decryptedSave = Encoding.UTF8.GetBytes(saveData);
-            cryptography.encryptFile(decryptedSave);
-            File.Replace(Path.Combine(tempPath, "encrypted-SaveFile.txt"),gameSavePath,null);
+        private static void createAndCleanFile(string path)
+        {
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+
+            using (File.Create(path)) { }
         }
 
     }
